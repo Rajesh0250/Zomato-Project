@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Rajesh0250_Zomato_Project_1784291771402-push-trigger-input-set
+  identifier: Build_Rajesh0250_Zomato_Project_1784291771402pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Rajesh_scope
+  pipeline:
+    identifier: Build_Rajesh0250_Zomato_Project_1784291771402
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
