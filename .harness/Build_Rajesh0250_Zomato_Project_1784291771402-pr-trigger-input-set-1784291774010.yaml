@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Rajesh0250_Zomato_Project_1784291771402-pr-trigger-input-set
+  identifier: Build_Rajesh0250_Zomato_Project_1784291771402prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Rajesh_scope
+  pipeline:
+    identifier: Build_Rajesh0250_Zomato_Project_1784291771402
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
