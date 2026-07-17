@@ -23,13 +23,15 @@ pipeline:
                   identifier: echo
                   name: echo
                   spec:
+                    shell: Sh
                     command: echo hello world
                   timeout: ""
                   type: Run
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: pool.yml
+                os: Linux
         type: CI
