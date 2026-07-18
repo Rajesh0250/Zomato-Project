@@ -43,6 +43,7 @@ pipeline:
                     tags:
                       - master-<+pipeline.sequenceId>
                     caching: true
-                    dockerfile: Dockerfile
+                    dockerfile: Zomato-Project/Dockerfile
+                    context: Zomato-Project
                     baseImageConnectorRefs:
                       - Docker_connector
