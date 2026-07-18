@@ -1,0 +1,47 @@
+pipeline:
+  name: eks_project
+  identifier: eks_project
+  projectIdentifier: Rajesh_scope
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Github_connector
+        build: <+input>
+        sparseCheckout: []
+  stages:
+    - stage:
+        name: Build_and_Push
+        identifier: Build_and_Push
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: Eks_connector
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: Docker_connector
+                    repo: rajesh0250/eks-project
+                    tags:
+                      - master-<+pipeline.sequenceId>
+                    caching: true
+                    dockerfile: Zomato-Project/Dockerfile
+                    context: Zomato-Project
