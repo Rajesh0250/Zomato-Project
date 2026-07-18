@@ -44,4 +44,3 @@ pipeline:
                       - master-<+pipeline.sequenceId>
                     caching: true
                     dockerfile: Zomato-Project/Dockerfile
-                    context: Zomato-Project
