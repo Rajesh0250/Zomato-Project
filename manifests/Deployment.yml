@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: cont-1
-          image: <+artifacts.primary.image>
+          image: {{.Values.image}}
           ports:
             - containerPort: 3000
             
