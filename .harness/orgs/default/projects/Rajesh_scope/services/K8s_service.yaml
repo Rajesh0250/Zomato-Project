@@ -1,0 +1,36 @@
+service:
+  name: K8s_service
+  identifier: K8s_service
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: k8s
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: Github_connector
+                  gitFetchType: Branch
+                  paths:
+                    - manifests/Deployment.yml
+                  repoName: Zomato-Project
+                  branch: master
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary:
+          primaryArtifactRef: testartifact
+          sources:
+            - spec:
+                connectorRef: Docker_connector
+                imagePath: rajesh0250/eks-project
+                tag: master-<+pipeline.sequenceId>
+                digest: ""
+              identifier: testartifact
+              type: DockerRegistry
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: Rajesh_scope
