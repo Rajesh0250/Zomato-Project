@@ -34,6 +34,18 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Find docker file
+                  identifier: Find_docker_file
+                  spec:
+                    connectorRef: Docker_connector
+                    image: alpine
+                    shell: Sh
+                    command: |-
+                      find /harness -name "Dockerfile"
+                      pwd
+                      ls -la
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
